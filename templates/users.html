@@ -1,0 +1,51 @@
+ {% extends "base.html" %}
+ {% block content %}
+ <link rel="stylesheet" href="css/db.css">   
+    <div class="container">
+
+    
+        <div class="row main_page">
+<div class="col">
+    <form class="addus" method="POST" action="{{ url_for('db') }}">
+    <table id="employees" style="width:100%"><tbody>
+    <tr>
+            <th>ФИО <input type="text" name="name"></th>
+            <th>Адрес <input type="text" name="address"></th>
+            <th>Серия паспорта <input type="text" name="serial"></th>
+            <th>Номер паспорта <input type="text" name="number"></th>
+            <th>Кем выдан паспорт <input type="text" name="issued"></th>
+            <th><input type="submit" class="btn btn-dark"></th>
+    </tr></tbody>
+    </table>
+            </form>
+</div>
+    <div class="w-100"></div>
+<div class="col">
+<form method="POST" action="{{ url_for('users') }}" enctype="multipart/form-data">
+<table id="employees" style="width:100%"><tbody>
+        {% if result %}
+    <tr>
+        <th>ФИО</th>
+        <th>Адрес</th>
+        <th>Серия паспорта</th>
+        <th>Номер паспорта</th>
+        <th>Кем выдан паспорт</th>
+    </tr>
+        {% for user in result%}
+    <tr>
+        <td> {{ user[1] }} </td>
+        <td> {{ user[2] }} </td>
+        <td> {{ user[3] }} </td>
+        <td> {{ user[4] }} </td>
+        <td> {{ user[5] }} </td>
+
+        <td><a href="/delete/{{ user.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Вы точно хотите удалить эту запись?')">Удалить</a> </td>
+    </tr></tbody>
+    {% endfor %}
+    {% endif %}
+    </table>
+            </div>
+          </div>
+    </div>
+</form>
+    {% endblock %}

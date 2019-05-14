@@ -1,0 +1,32 @@
+ {% extends "base.html" %}
+ {% block content %}
+    <div class="container">
+        <div class="row main_page">
+            <div class="col-sm">
+             <h2>Загрузите шаблон</h2><p>
+<form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
+<input type="file" name="file" multiple class="btn btn-dark"></br>
+
+
+            </div>
+            <div class="col-sm">
+              <h2>Выбор данных клиента</h2><p>
+              <select  id="id" name="id" class="btn btn-dark">
+              {% for client in result%}
+              <option  value={{client[0]}}>{{client[1]}}</option>
+              {% endfor %}
+              </select>
+              
+            </div>
+            <div class="col-sm">
+              <h2>Генерация документа</h2>
+              <p>
+             
+              <input type="submit" value="Generate" class="btn btn-dark">
+  </form>
+            </div>
+          </div>
+    </div>
+   
+    {% endblock %}
+              

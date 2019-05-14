@@ -1,0 +1,22 @@
+ {% extends "base.html" %}
+ {% block content %}
+ <link rel="stylesheet" href="css/db.css">   
+    <div class="container">
+
+    
+        <div class="row main_page">
+<div class="col">
+    <form class="addus" method="POST" action="{{ url_for('add') }}">
+            ФИО <input type="text" name="name">
+            Адрес <input type="text" name="address">
+            Серия паспорта <input type="text" name="serial">
+            Номер паспорта <input type="text" name="number">
+            Кем выдан паспорт <input type="text" name="issued">
+            <input type="submit">
+            </form>
+            <h2> В базе данных нет записей, для дальнейшей работы необходимо внести одну запись!</h2>
+    </div>
+          </div>
+    </div>
+</form>
+    {% endblock %}
