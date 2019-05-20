@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+        <div class="row main_page">
+            <div class="col">
+<h1>Изменение данных клиента</h1>
+  <form method="POST" action="">
+  {% for user in form %}
+            <table id="employees" style="width:100%"><tbody>
+    <tr>
+            <th>ФИО <input type="text" name="name" value="{{user.1}}"></th><p>
+            <th>Адрес <input type="text" name="address" value="{{user.2}}"></th><p>
+            <th>Серия паспорта <input type="text" name="serial" value="{{user.3}}"></th><p>
+            <th>Номер паспорта <input type="text" name="number" value="{{user.4}}" ></th><p>
+            <th>Кем выдан паспорт <input type="text" name="issued" value="{{user.5}}"></th><p>
+    <th><button class="btn btn-primary" type="submit" value="{{user.6}}">Изменить</th><p>
+    </tr></tbody>
+    </table>
+  </form>
+            </div>
+        </div>
+</div>
+  {% endfor %}
+{% endblock %}

@@ -14,12 +14,13 @@
             <th>Серия паспорта <input type="text" name="serial"></th>
             <th>Номер паспорта <input type="text" name="number"></th>
             <th>Кем выдан паспорт <input type="text" name="issued"></th>
-            <th><input type="submit" class="btn btn-dark"></th>
     </tr></tbody>
     </table>
+    <button type="submit" class="btn btn-primary">Добавить</button>
             </form>
 </div>
-    <div class="w-100"></div>
+    <div class="w-100">
+    </div>
 <div class="col">
 <form method="POST" action="{{ url_for('users') }}" enctype="multipart/form-data">
 <table id="employees" style="width:100%"><tbody>
@@ -39,7 +40,9 @@
         <td> {{ user[4] }} </td>
         <td> {{ user[5] }} </td>
 
-        <td><a href="/delete/{{ user.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Вы точно хотите удалить эту запись?')">Удалить</a> </td>
+       <p> <td><a href="/delete/{{ user.0 }}" class="btn btn-danger" onclick="return confirm('Вы точно хотите удалить эту запись?')">Удалить</a><p>
+        <p> <td><a href="/edit_client/{{ user.0 }}" class="btn btn-primary">Изменить</a><p>
+
     </tr></tbody>
     {% endfor %}
     {% endif %}
@@ -48,4 +51,5 @@
           </div>
     </div>
 </form>
+
     {% endblock %}

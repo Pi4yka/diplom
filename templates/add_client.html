@@ -7,12 +7,17 @@
         <div class="row main_page">
 <div class="col">
     <form class="addus" method="POST" action="{{ url_for('add') }}">
-            ФИО <input type="text" name="name">
-            Адрес <input type="text" name="address">
-            Серия паспорта <input type="text" name="serial">
-            Номер паспорта <input type="text" name="number">
-            Кем выдан паспорт <input type="text" name="issued">
-            <input type="submit">
+           <table id="employees" style="width:100%"><tbody>
+    <tr>
+            <th>ФИО <input type="text" name="name"></th>
+            <th>Адрес <input type="text" name="address"></th>
+            <th>Серия паспорта <input type="text" name="serial"></th>
+            <th>Номер паспорта <input type="text" name="number"></th>
+            <th>Кем выдан паспорт <input type="text" name="issued"></th>
+
+    </tr></tbody>
+    </table>
+            <input type="submit" class="btn btn-primary">
             </form>
             <h2> В базе данных нет записей, для дальнейшей работы необходимо внести одну запись!</h2>
     </div>
