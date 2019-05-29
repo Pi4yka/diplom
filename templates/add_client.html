@@ -5,15 +5,15 @@
 
     
         <div class="row main_page">
-<div class="col">
+<div class="table-responsive">
     <form class="addus" method="POST" action="{{ url_for('add') }}">
-           <table id="employees" style="width:100%"><tbody>
+           <table class="table"><tbody>
     <tr>
-            <th>ФИО <input type="text" name="name"></th>
-            <th>Адрес <input type="text" name="address"></th>
-            <th>Серия паспорта <input type="text" name="serial"></th>
-            <th>Номер паспорта <input type="text" name="number"></th>
-            <th>Кем выдан паспорт <input type="text" name="issued"></th>
+            <th scope="col">ФИО <input type="text" name="name" style="width: 240px"></th>
+            <th scope="col">Адрес <input type="text" name="address" style="width: 240px"></th>
+            <th scope="col">Серия паспорта <input id="passport" type="text" name="serial" style="width: 150px"></th>
+            <th scope="col">Номер паспорта <input id="passport1" type="text" name="number" style="width: 150px"></th>
+            <th scope="col">Кем выдан паспорт <input type="text" name="issued" ></th>
 
     </tr></tbody>
     </table>

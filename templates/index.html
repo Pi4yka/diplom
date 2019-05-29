@@ -1,32 +1,39 @@
  {% extends "base.html" %}
  {% block content %}
-    <div class="container">
-        <div class="row main_page">
-            <div class="col-sm">
-             <h2>Загрузите шаблон</h2><p>
-<form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
-<input type="file" name="file" multiple class="btn btn-primary"></br>
-
-
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#show-me').hide();
+  $('#gen').hide();
+   $("#upload").change(function() {
+      $('#show-me').show();     
+   });
+   $("#show-me").change(function(){
+     $('#gen').show();
+   });
+});
+</script>
+  <div class="container">
+    <div class="row justify-content-center " style="text-align:center;">
+    <form method="POST" action="{{ url_for('generate') }}" enctype="multipart/form-data">
+            <div class="col-xl" style="margin-bottom: 50px;">
+             <h2>Загрузите шаблон</h2>
+              <input id="upload" type="file" name="file" multiple class="btn btn-primary"></br>
             </div>
-            <div class="col-sm">
-              <h2>Выбор данных клиента</h2><p>
+            <div id="show-me" class="col-xl" style="margin-bottom: 50px;">
+              <h2>Выбор данных клиента</h2>
               <select  id="id" name="id" class="btn btn-primary">
+              <option id="disabled" selected>Выберите клиента</option>
               {% for client in result%}
               <option  value={{client[0]}}>{{client[1]}}</option>
               {% endfor %}
               </select>
-              
             </div>
-            <div class="col-sm">
+            <div id="gen" class="col-xl">
               <h2>Генерация документа</h2>
-              <p>
-             
               <input type="submit" value="Заполнить" class="btn btn-primary">
-  </form>
             </div>
-          </div>
-    </div>
-   
+  </form>
+    </div>    
+  </div>
     {% endblock %}
               

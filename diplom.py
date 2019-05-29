@@ -5,6 +5,7 @@ from mailmerge import MailMerge
 from datetime import date
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from datetime import datetime
 
 app = Flask(__name__, static_folder='static')
 
@@ -112,7 +113,7 @@ def generate():
 
         document.merge(
             name = user[1],
-            date = '{:%d-%b-%Y}'.format(date.today()),
+            date = '{:%d-%m-%Y}'.format(datetime.now()),
             address = user[2],
             serial = user[3],
             number = user[4],
@@ -126,13 +127,11 @@ def return_file():
 
 @app.route('/edit_client/<string:id>', methods=['GET', 'POST'])
 def edit_client(id):
-    # Create cursor
+
     cur = mysql.connection.cursor()
-    # Get article by id
     result = cur.execute("SELECT * FROM users WHERE id = %s", [id])
     client = cur.fetchall()
     cur.close()
-    # Get form
     form = request.form
     if request.method == 'POST':
         name = request.form['name']
@@ -140,13 +139,9 @@ def edit_client(id):
         serial = request.form['serial']
         number = request.form['number']
         issued = request.form['issued']
-        # Create Cursor
         cur = mysql.connection.cursor()
-        # Execute
         cur.execute ("UPDATE users SET name=%s, address=%s, serial=%s, number=%s, issued=%s WHERE id=%s",(name, address, serial, number, issued, id))
-        # Commit to DB
         mysql.connection.commit()
-        #Close connection
         cur.close()
         return redirect(url_for('users'))
     return render_template('edituser.html', form=client)

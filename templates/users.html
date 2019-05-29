@@ -5,32 +5,32 @@
 
     
         <div class="row main_page">
-<div class="col">
+<div class="table-responsive">
     <form class="addus" method="POST" action="{{ url_for('db') }}">
-    <table id="employees" style="width:100%"><tbody>
+    <table class="table" ><tbody>
     <tr>
-            <th>ФИО <input type="text" name="name"></th>
-            <th>Адрес <input type="text" name="address"></th>
-            <th>Серия паспорта <input type="text" name="serial"></th>
-            <th>Номер паспорта <input type="text" name="number"></th>
-            <th>Кем выдан паспорт <input type="text" name="issued"></th>
+            <th scope="col">ФИО <input type="text" name="name" style="width: 240px"></th>
+            <th scope="col">Адрес <input type="text" name="address" style="width: 240px"></th>
+            <th scope="col">Серия паспорта <input id="passport" type="text" name="serial"  maxlength ="4" style="width: 150px"></th>
+            <th scope="col">Номер паспорта <input id="passport1" type="text" name="number" maxlength ="6" style="width: 150px"></th>
+            <th scope="col">Кем выдан паспорт <input type="text" name="issued" ></th>
     </tr></tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Добавить</button>
+    <button type="submit" class="btn btn-primary" id="confirm-button-next">Добавить</button>
             </form>
 </div>
     <div class="w-100">
     </div>
-<div class="col">
+<div class="table-responsive">
 <form method="POST" action="{{ url_for('users') }}" enctype="multipart/form-data">
-<table id="employees" style="width:100%"><tbody>
+<table class="table" ><tbody>
         {% if result %}
     <tr>
-        <th>ФИО</th>
-        <th>Адрес</th>
-        <th>Серия паспорта</th>
-        <th>Номер паспорта</th>
-        <th>Кем выдан паспорт</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Адрес</th>
+        <th scope="col">Серия паспорта</th>
+        <th scope="col">Номер паспорта</th>
+        <th scope="col">Кем выдан паспорт</th>
     </tr>
         {% for user in result%}
     <tr>
@@ -40,8 +40,8 @@
         <td> {{ user[4] }} </td>
         <td> {{ user[5] }} </td>
 
-       <p> <td><a href="/delete/{{ user.0 }}" class="btn btn-danger" onclick="return confirm('Вы точно хотите удалить эту запись?')">Удалить</a><p>
-        <p> <td><a href="/edit_client/{{ user.0 }}" class="btn btn-primary">Изменить</a><p>
+    <td><a href="/delete/{{ user.0 }}" class="btn btn-danger" onclick="return confirm('Вы точно хотите удалить эту запись?')">Удалить</a>
+    <td><a href="/edit_client/{{ user.0 }}" class="btn btn-primary">Изменить</a>
 
     </tr></tbody>
     {% endfor %}
